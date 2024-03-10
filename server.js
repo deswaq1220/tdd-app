@@ -22,3 +22,9 @@ app.use("/api/products", productsRoutes);
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
+
+app.use((error, req, res, next) => {
+  res.status(500).json({ message: error.message });
+});
+
+module.exports = app;
